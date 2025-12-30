@@ -1,0 +1,331 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+  /*--spacing: 5px;*/
+}
+
+:root {
+  --bg: #f1f3f4;
+  --surface: #ffffff;
+  --muted: #5f6368;
+  --accent: #1a73e8;
+  --border: #e0e0e0;
+  --color-hl: #bfdbfe;
+/*  --color-blue-500: #2b7fff;
+  --color-blue-600: #155dfc;
+  --color-blue-700: #1447e6;
+  --color-gray-100: #f3f4f6;
+  --color-gray-300: #d1d5dc;
+  --color-gray-500: #6a7282;
+  --color-gray-600: #4a5565;
+  --color-gray-700: #364153;
+  --color-gray-800: #1e2939;*/
+}
+
+::placeholder {
+  color: var(--muted);
+}
+
+.container {
+  @apply w-dvw h-dvh overflow-hidden flex flex-col;
+}
+
+.topbar {
+  @apply flex flex-col items-start justify-center min-h-[3rem] px-2 py-2 gap-y-2 shrink-[0];
+  /*@apply h-14;*/
+  border-bottom: 1px solid var(--border);
+  flex: 0 1 auto;
+}
+
+.logo {
+  @apply text-lg font-semibold px-2;
+}
+
+.searchbox {
+
+}
+
+.searchbar {
+  @apply outline-none w-full;
+  background: transparent;
+}
+
+.viewer {
+  @apply flex flex-col overflow-y-scroll overflow-x-hidden;
+  flex: 1 0 0;
+}
+
+.toolbar {
+  @apply grid grid-flow-col grid-rows-1 grid-cols-[99fr_100px_1fr] gap-4 w-full items-center justify-center sticky top-0;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--surface);
+}
+
+.navbtn {
+  @apply border-none items-center gap-2 p-2 py-1 rounded-md border cursor-pointer justify-self-center;
+  background: transparent;
+}
+
+.navbtn:hover {
+  background: var(--border);
+}
+
+.tabs {
+  @apply justify-self-start w-full flex;
+  overflow: hidden;
+}
+
+.tab {
+  @apply inline-flex items-center justify-start px-4 py-2 max-w-32 min-w-16 cursor-pointer text-blue-600;
+  border-bottom: 2px solid rgb(37 99 235);
+  flex: 1 1 auto;
+}
+
+.tab:hover {
+  background: var(--border);
+}
+
+/*.tab.active {
+  border-bottom: 2px solid var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}*/
+
+.pageinfo {
+  @apply justify-self-center text-xs;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.notecard {
+  @apply last:border-b;
+}
+.notecard.expand .noteheader {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+.notecard.expand .notetitle {
+  @apply text-black dark:text-white;
+}
+.notecard:hover.expand {
+}
+.notecard:hover .toolbtn:hover {
+  @apply bg-gray-200 dark:bg-gray-700;
+}
+
+
+.noteheader {
+  @apply grid grid-cols-[4fr_1fr_1lh] items-center justify-between w-full px-4 py-2 font-medium rtl:text-right text-gray-700 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3;
+}
+
+.notedetail {
+  @apply grid grid-cols-[4fr_1fr_1lh] gap-3 border border-b-0 border-gray-200 dark:bg-gray-900 dark:border-gray-700 p-4;
+}
+.expand .notedetail {
+  display: grid;
+}
+
+
+.toolbtn {
+  @apply rounded-full;
+  width: 1lh;
+  height: 1lh;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.toolbtn:hover {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+.expand .toolbtn.detail {
+  @apply rotate-180 text-gray-900 dark:text-white;
+}
+
+
+.notepreview {
+  @apply text-sm/6 col-span-2 text-ellipsis overflow-hidden text-gray-500 dark:text-gray-400;
+}
+.searchresult .notepreview {
+  @apply max-h-fit;
+}
+
+.notedate {
+  @apply text-xs text-end truncate;
+  color: var(--muted);
+}
+
+
+.notebtns {
+  @apply contents;
+}
+.notebtns .delete {
+  @apply self-start;
+}
+
+.dropdown {
+  @apply relative w-full;
+}
+.dropdown-content {
+  @apply p-2 rounded absolute z-10 outline-offset-[-1px] outline block outline-gray-300 bg-gray-50 shadow-lg;
+  left: 0;
+  right: 0;
+}
+.dropdown-content div {
+  @apply p-2 rounded;
+  display: block;
+}
+.dropdown-item:hover, .dropdown-item:focus {
+  @apply bg-gray-200;
+}
+.dropdown-item .desc {
+  @apply text-sm mt-1 overflow-hidden text-ellipsis text-gray-500;
+  line-height: 1.25em;
+  max-height: 2.5em;
+}
+
+
+
+.snippets b {
+  @apply text-base;
+  font-weight: bolder;
+  color: black;
+  text-decoration: underline;
+}
+.snippets hl {
+  @apply p-[0.25rem];
+  border-radius: 0.5rem;
+  background-color: var(--color-hl);
+  color: black;
+}
+.snippets p {
+  margin-bottom: 1em;
+}
+.snippets p::after {
+  content: " ... ";
+  color: gray;
+}
+.snippets p::before {
+  content: " ... ";
+  color: gray;
+}
+.snippets.notepreview {
+  max-height: fit-content;
+}
+
+.searchinfo {
+  @apply px-3 text-sm;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.toolbar.search {
+  @apply static grid grid-flow-col grid-rows-1 grid-cols-[1fr_99fr_1fr] gap-4 w-full items-center justify-center top-0 p-2;
+}
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  overflow: hidden;
+}
+
+.editor.hidden {
+  display: none;
+}
+
+.editor-header {
+  @apply p-4;
+  flex: 0 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+
+.editor-body {
+  @apply p-4 flex-1;
+  overflow: hidden;
+}
+
+.editor-footer {
+  @apply p-4 flex;
+  flex: 0 0 auto;
+  border-top: 1px solid var(--border);
+  justify-content: space-between;
+}
+
+.title-input {
+  @apply text-lg p-1 font-semibold;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-overflow: ellipsis; 
+  overflow: hidden;
+}
+
+.title-input br {
+  display:none;
+}
+
+.title-input * {
+  white-space: nowrap;
+  display: inline;
+}
+
+.content-textarea {
+  @apply text-sm w-full h-full;
+  resize: none;
+  border: none;
+  outline: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  white-space: break-spaces;
+}
+
+.content-textarea b {
+  font-weight: bolder;
+  color: black;
+  text-decoration: underline;
+}
+
+.content-textarea hl {
+  @apply p-[0.25rem];
+  border-radius: 0.5rem;
+  background-color: var(--color-hl);
+  color: black;
+}
+
+.toolbtn_lg {
+  @apply rounded-full;
+  position: relative;
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+.toolbtn_lg[disabled] {
+  cursor: not-allowed;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.toolbtn_lg:hover:not([disabled]) {
+  @apply bg-gray-200;
+}
+
+.toolbtn_lg svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrong_password {
+  outline: #dc2626 auto 1px;
+}
+
+.hidden {
+  display: none;
+}
